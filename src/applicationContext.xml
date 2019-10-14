@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	                       http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+
+	<!-- 
+		bean的作用域：singleton、prototype、request、session、globalSession
+		
+				1.scope="singleton"：单例模式，默认配置，所有bean在内存中仅存在一个对象
+				
+					好处：① 节省内存    ② 共享对象     ③ 注意线程安全
+					
+				2.scope="prototype"：原型模式（非单例模式），在用户每调用一次getBean()，生成一个对象
+				
+					有状态的bean使用原型模式（非单例模式），
+					无状态的bean使用单例模式。
+					
+				3.scope="request":在一次请求中有效，每发起一次请求生成一个新的对象
+				
+				4.scope="session":在一次会话中有效，每打开一个新的会话生成一个新的对象
+				
+				5.scope="globalSession":在一次会话中有效
+				
+					3、4、5必须在web环境中使用,且必须在web.xml中注册监听器
+						  <listener>
+						  		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+						  </listener>
+		 
+	 -->
+	<bean id="userDao" class="spring.UserDaoImpl" scope="session"></bean>
+
+</beans>

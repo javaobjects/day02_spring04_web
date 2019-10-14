@@ -1,0 +1,27 @@
+bean的属性：
+		1. id:引用名称，每个对象的唯一标识，不允许重复
+		
+		2. class:包名  + 类名，表示需要new的对象的路径
+		
+		3. init-method：指定对象使用过程中的初始化方法
+		
+		4. destroy-method：指定对象使用过程中的销毁方法
+		
+		bean的生命周期： 实例化  -> 初始化 —> 使用对象  ->  销毁
+		
+		<bean id="userDao" class="spring.UserDaoImpl" init-method="myInit" destroy-method="myDestroy"></bean>
+			
+--------------------------------------------------------------------------------------------------------
+		5.factory-bean:指定实例工厂的引用名称
+		
+		6.factory-method：调用工厂中的方法名称
+		
+		<bean id="factory" class="spring.factory.DaoNonStaticFactory"></bean>
+	    <bean id="userDao3" factory-bean="factory"  factory-method="createUserDao"></bean>
+--------------------------------------------------------------------------------------------------------
+        7. scope:指定bean的作用域范围
+        
+           scope取值：singleton（默认）,prototype,request,session,globalSession
+        	
+		 <bean id="userDao" class="spring.UserDaoImpl" scope="singleton"></bean>
+        	
